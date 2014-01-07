@@ -1,0 +1,105 @@
+		body
+		{
+			background-image: url("img/pageBg.png");
+			background-color: white;
+			background-repeat: repeat-x;	
+			font-family: arial;		
+			margin: 0;
+		}
+		
+		table.title-table
+		{
+			background-image: url("img/titleBg.png");
+			background-position: 0 0;
+			background-repeat: no-repeat;
+			width: 723px;
+			height: 371px;
+		}
+		
+		.test-session-title-cell
+		{
+			width: 300px;
+			height: 130px;
+			text-align: center;
+			color: white;	
+			font-weight: bold;
+		}
+		
+		h1
+		{
+		    font-size: 24px;
+		}	
+
+		h2
+		{
+		    font-size: 18px;
+		}	
+		
+		.test-session-versions
+		{
+			height: 50px;
+			color: white;
+		}
+		
+		table.sign-table
+		{
+			background-position: 0 0;
+			background-repeat: no-repeat;
+			width: 723px;
+			height: 293px;
+			color: white;
+			text-align: center;
+			font-size: 24px;
+		}	
+
+        table.sign-table.red
+        {
+			background-image: url("img/redSignBg.png");
+        }
+        
+        table.sign-table.green
+        {
+			background-image: url("img/greenSignBg.png");
+        }        
+		
+		table.cell-table
+		{
+		    border: 0px;
+		    border-spacing: 0px;
+		    margin-left: 15px;
+		    font-style: italic;
+		    font-weight: bold;
+		    color: white;
+		}
+		
+		table
+		{
+            border-spacing:0;
+            padding:0;	
+		}
+		
+		table.cell-table .celltop
+		{
+		    background-image: url("img/cellTop.png");
+		    background-repeat: no-repeat;
+		    text-align: right;
+		    margin-right: 10px;
+		}
+		
+		table.cell-table .cellbody
+		{
+		    background-image: url("img/cellBody.png");
+		    text-align:center;
+		    font-style: normal;
+		}
+				
+		table.cell-table .cellbottom
+		{
+		    background-image: url("img/cellBottom.png");
+		    background-repeat: no-repeat;
+		}		
+		
+		table.cell-table .suiteSeparator
+		{
+		    text-align: center;
+		}	
