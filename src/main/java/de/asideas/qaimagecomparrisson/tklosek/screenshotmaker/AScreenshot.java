@@ -88,19 +88,5 @@ public abstract class AScreenshot implements IScreenshot {
 		return actualScreenshotFile;
 	}
 	
-	@Override
-	public Image getScreensotAsImage() {
-		Image image = null;
-
-		try {
-			image = Screenshot.loadImageFromFile(actualScreenshotFile);
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-
-		return image;
-
-	}
 
 }

@@ -8,6 +8,5 @@ import org.openqa.selenium.WebDriver;
 public interface IScreenshot {
 				
 		WebDriver getWebDriver();
-		Image getScreensotAsImage();
 		File getScreenshotAsFile();
 }
