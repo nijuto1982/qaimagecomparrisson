@@ -1,12 +1,4 @@
 /build
 /screenshots
-/bin/*
+/bin
 *.class
-
-bin/de/asideas/qaimagecomparrisson/tklosek/main/Main.class
-
-bin/de/asideas/qaimagecomparrisson/tklosek/screenshotmaker/ScreenshotChrome.class
-
-bin/de/asideas/qaimagecomparrisson/tklosek/screenshotmaker/ScreenshotChrome.class
-
-bin/de/asideas/qaimagecomparrisson/tklosek/screenshotmaker/ScreenshotFirefox.class
