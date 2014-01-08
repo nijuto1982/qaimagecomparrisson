@@ -5,6 +5,10 @@ import java.io.File;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+/**
+ * @author Tobias Klosek
+ *
+ */
 public class ScreenshotChrome extends AScreenshot {
 
 

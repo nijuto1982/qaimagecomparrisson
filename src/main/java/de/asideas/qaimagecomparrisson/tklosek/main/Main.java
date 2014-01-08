@@ -7,12 +7,7 @@ import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 
 import javax.swing.JFileChooser;
 
@@ -21,18 +16,17 @@ import org.jdiffchaser.imgprocessing.Screenshot;
 import org.jdiffchaser.utils.ImageUtilities;
 
 import de.asideas.qaimagecomparrisson.tklosek.screenshotmaker.IScreenshot;
-import de.asideas.qaimagecomparrisson.tklosek.screenshotmaker.ScreenshotChrome;
 import de.asideas.qaimagecomparrisson.tklosek.screenshotmaker.ScreenshotFirefox;
 
 /**
- * @author tklosek
+ * @author Tobias Klosek
  * 
  */
 public class Main {
 
+	private static final String REFERENCESCREENSHOTFF = "referenceScreenshotFF.png";
 	private static final String SCREENSHOTPATH = "screenshots";
 	private static final String URL = "http://www.welt.de/";
-	private static final String REFERENCESCREENSHOTFF = "referenceScreenshotFF.png";
 
 	/**
 	 * @param args
@@ -64,14 +58,15 @@ public class Main {
 		String referenceScreenshotFilename = referenceScreenshotFile.getName();
 
 		try {
-			
+
 			Image referenceScreenshotImage = Screenshot.loadImageFromFile(referenceScreenshotFile);
 			Image currentScreenshotImage = Screenshot.loadImageFromFile(currentScreenshotAsFile);
 
-			ImageComparator imageComparator = ImageComparator.getInstance(0.6, referenceScreenshotImage, "Reference Screenshot: " + referenceScreenshotFilename,
-					currentScreenshotImage, "compare with: " + currentScreenshotFilename);
+			ImageComparator imageComparator = ImageComparator.getInstance(0.6, referenceScreenshotImage,
+					"Reference Screenshot: " + referenceScreenshotFilename, currentScreenshotImage, "compare with: " + currentScreenshotFilename);
 
-			imageComparator.compareImages(false);//try with false to avoid animations...
+			imageComparator.compareImages(false);// try with false to avoid
+													// animations...
 
 			String absolutePathFilename = referenceScreenshotFile.getAbsolutePath();
 			String absolutePath = absolutePathFilename.substring(0, absolutePathFilename.lastIndexOf(File.separator));
