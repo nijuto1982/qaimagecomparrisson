@@ -24,9 +24,9 @@ import de.asideas.qaimagecomparrisson.tklosek.screenshotmaker.ScreenshotFirefox;
  */
 public class Main {
 
-	private static final String REFERENCESCREENSHOTFF = "referenceScreenshotFF.png";
 	private static final String SCREENSHOTPATH = "screenshots";
-	private static final String URL = "http://www.welt.de/";
+	private static final String URL = "http://uat2.welt.de/";
+	private static final String REFERENCESCREENSHOTFF = "refScreenshFF.png";
 
 	/**
 	 * @param args
@@ -40,9 +40,14 @@ public class Main {
 
 		// IScreenshot screenshotChrome = new ScreenshotChrome(SCREENSHOTPATH,
 		// "testInstsantziertChrome", URL); //works
+		boolean takeReferenceScreenshot = false;
+		if (takeReferenceScreenshot) {
+			new ScreenshotFirefox(SCREENSHOTPATH, REFERENCESCREENSHOTFF, URL);
+		}
 
-		final IScreenshot currentScreenshotFF = new ScreenshotFirefox(SCREENSHOTPATH, currentDateTimeformatted + "_currentScreenshotFF", URL);
+		final IScreenshot currentScreenshotFF = new ScreenshotFirefox(SCREENSHOTPATH, currentDateTimeformatted + "_currentScreenshotFF.png", URL);
 		processImageComparrison(currentScreenshotFF);
+
 	}
 
 	/**
@@ -81,10 +86,15 @@ public class Main {
 			// fileChooser.setCurrentDirectory(new
 			// File(System.getProperty("user.dir")));
 
-			fileChooser.setSelectedFile(new File(currentScreenshotFilename + "_differences.png"));
+			// ImageUtilities.storeImage(imageComparator.getLastResultImage(),
+			// new File("diffs_" +
+			// currentScreenshotFilename).getAbsolutePath());
+
+			fileChooser.setSelectedFile(new File("diffs_" + currentScreenshotFilename));
 			if (fileChooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
 				ImageUtilities.storeImage(imageComparator.getLastResultImage(), fileChooser.getSelectedFile().getPath());
 			}
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

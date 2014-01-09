@@ -69,7 +69,7 @@ public abstract class AScreenshot implements IScreenshot {
 		}
 		System.out.println(driver.findElement(By.id("front")).getSize());
 		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-		actualScreenshotFile = new File(path + "/" + filename + ".png");
+		actualScreenshotFile = new File(path + "/" + filename);
 
 		driver.close();
 		driver.quit();
