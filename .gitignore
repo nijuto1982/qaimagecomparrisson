@@ -1,4 +1,6 @@
 /build
 /screenshots
 /bin
+/screenshots/*
+/bin/*
 *.class
