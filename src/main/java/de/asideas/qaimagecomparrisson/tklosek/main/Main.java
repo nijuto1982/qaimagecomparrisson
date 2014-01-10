@@ -25,7 +25,7 @@ import de.asideas.qaimagecomparrisson.tklosek.screenshotmaker.ScreenshotFirefox;
 public class Main {
 
 	private static final String SCREENSHOTPATH = "screenshots";
-	private static final String URL = "http://uat2.welt.de/";
+	private static final String URL = "http://www.welt.de/";
 	private static final String REFERENCESCREENSHOTFF = "refScreenshFF.png";
 
 	/**
@@ -40,7 +40,8 @@ public class Main {
 
 		// IScreenshot screenshotChrome = new ScreenshotChrome(SCREENSHOTPATH,
 		// "testInstsantziertChrome", URL); //works
-		boolean takeReferenceScreenshot = false;
+		boolean takeReferenceScreenshot = true;
+		
 		if (takeReferenceScreenshot) {
 			new ScreenshotFirefox(SCREENSHOTPATH, REFERENCESCREENSHOTFF, URL);
 		}
