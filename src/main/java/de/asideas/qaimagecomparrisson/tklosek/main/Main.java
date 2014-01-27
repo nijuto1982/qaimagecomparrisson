@@ -11,6 +11,10 @@ import java.util.Date;
 
 import javax.swing.JFileChooser;
 
+import org.apache.commons.configuration.CompositeConfiguration;
+import org.apache.commons.configuration.ConfigurationException;
+import org.apache.commons.configuration.PropertiesConfiguration;
+import org.apache.commons.configuration.SystemConfiguration;
 import org.jdiffchaser.imgprocessing.ImageComparator;
 import org.jdiffchaser.imgprocessing.Screenshot;
 import org.jdiffchaser.utils.ImageUtilities;
@@ -24,30 +28,63 @@ import de.asideas.qaimagecomparrisson.tklosek.screenshotmaker.ScreenshotFirefox;
  */
 public class Main {
 
-	private static final String SCREENSHOTPATH = "screenshots";
-	private static final String URL = "http://www.welt.de/";
-	private static final String REFERENCESCREENSHOTFF = "refScreenshFF.png";
+	private static String screenshotpath;
+	private static String refsreenshff;
+	private static String url;
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
+
+		setupConfig();
+
+		String currentDateTimeformatted = setupDateFormat();
+
+		// TODO Auto-generated method stub
+		// IScreenshot screenshotChrome = new ScreenshotChrome(SCREENSHOTPATH,
+		// "testInstsantziertChrome", url); //works
+
+		boolean takeReferenceScreenshot = false;
+
+		if (takeReferenceScreenshot) {
+			new ScreenshotFirefox(screenshotpath, refsreenshff, url);
+		}
+
+		final IScreenshot currentScreenshotFF = new ScreenshotFirefox(screenshotpath, currentDateTimeformatted + "_currentScreenshotFF.png", url);
+		processImageComparrison(currentScreenshotFF);
+
+	}
+
+	/**
+	 * @return
+	 */
+	private static String setupDateFormat() {
 		Date dNow = new Date();
 		SimpleDateFormat ft = new SimpleDateFormat("yyyyMMdd-HHmmss");
 		String currentDateTimeformatted = ft.format(dNow);
 		System.out.println("Current Date: " + currentDateTimeformatted);
-		// TODO Auto-generated method stub
+		return currentDateTimeformatted;
+	}
 
-		// IScreenshot screenshotChrome = new ScreenshotChrome(SCREENSHOTPATH,
-		// "testInstsantziertChrome", URL); //works
-		boolean takeReferenceScreenshot = true;
-		
-		if (takeReferenceScreenshot) {
-			new ScreenshotFirefox(SCREENSHOTPATH, REFERENCESCREENSHOTFF, URL);
+	/**
+	 * 
+	 */
+	private static void setupConfig() {
+		CompositeConfiguration config = new CompositeConfiguration();
+		config.addConfiguration(new SystemConfiguration());
+		try {
+			config.addConfiguration(new PropertiesConfiguration("application.properties"));
+		} catch (ConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
-		final IScreenshot currentScreenshotFF = new ScreenshotFirefox(SCREENSHOTPATH, currentDateTimeformatted + "_currentScreenshotFF.png", URL);
-		processImageComparrison(currentScreenshotFF);
+		screenshotpath = config.getString("screenshotpath");
+		refsreenshff = config.getString("refsreensh.ff");
+		url = config.getString("url.politik");
+
+		System.out.println(screenshotpath + ", " + refsreenshff + ", " + url);
 
 	}
 
@@ -58,7 +95,7 @@ public class Main {
 	 * @throws IOException
 	 */
 	private static void processImageComparrison(final IScreenshot currentScreenshot) {
-		File referenceScreenshotFile = new File(SCREENSHOTPATH + "/" + REFERENCESCREENSHOTFF);
+		File referenceScreenshotFile = new File(screenshotpath + "/" + refsreenshff);
 		File currentScreenshotAsFile = currentScreenshot.getScreenshotAsFile();
 		String currentScreenshotFilename = currentScreenshotAsFile.getName();
 		String referenceScreenshotFilename = referenceScreenshotFile.getName();
@@ -77,7 +114,6 @@ public class Main {
 			String absolutePathFilename = referenceScreenshotFile.getAbsolutePath();
 			String absolutePath = absolutePathFilename.substring(0, absolutePathFilename.lastIndexOf(File.separator));
 
-			System.out.println(absolutePath);
 
 			JFileChooser fileChooser = new JFileChooser(System.getProperty(absolutePath));
 

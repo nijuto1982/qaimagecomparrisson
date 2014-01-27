@@ -51,9 +51,6 @@ public abstract class AScreenshot implements IScreenshot {
 		windowHeight = driver.manage().window().getSize().height;
 
 		int windowHeigtQuarter = windowHeight / 4;
-
-		System.out.println(windowHeight);
-
 		for (int second = 0;; second += windowHeigtQuarter) {
 			if (second > contentHeight) {
 				System.out.println(second);
@@ -67,7 +64,6 @@ public abstract class AScreenshot implements IScreenshot {
 				e.printStackTrace();
 			}
 		}
-		System.out.println(driver.findElement(By.id("front")).getSize());
 		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		actualScreenshotFile = new File(path + "/" + filename);
 
@@ -87,6 +83,5 @@ public abstract class AScreenshot implements IScreenshot {
 	public File getScreenshotAsFile() {
 		return actualScreenshotFile;
 	}
-	
 
 }

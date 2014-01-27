@@ -12,6 +12,8 @@ dependencies {
     compile ('commons-collections:commons-collections:3.2.1')
 	compile ('org.seleniumhq.selenium:selenium-firefox-driver:2.37.1')
 	compile ('org.seleniumhq.selenium:selenium-chrome-driver:2.37.1')
+	compile ('commons-configuration:commons-configuration:1.10')
+	
 	//compile ('org.seleniumhq.selenium:selenium-remote-driver:2.37.1')
 	
 	compile fileTree(dir: 'libs/jdist', include: '*.jar')
